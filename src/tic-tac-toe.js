@@ -30,51 +30,32 @@ class TicTacToe {
         }
         else this.next = false;
         
-
-        if (this.board[0][0] == this.board[1][0] && this.board[1][0] == this.board[2][0] && this.board[2][0] != null) {
-            this.winner = this.symbol;
-            this.finish = true;
-        }
-        else
-            if (this.board[0][1] == this.board[1][1] && this.board[1][1] == this.board[2][1] && this.board[2][1] != null) {
+        for (var i = 0; i < 3; i++) {
+            if (this.board[0][i] == this.board[1][i] && this.board[1][i] == this.board[2][i] && this.board[2][i] != null) {
                 this.winner = this.symbol;
                 this.finish = true;
             }
-            else
-                if (this.board[0][2] == this.board[1][2] && this.board[1][2] == this.board[2][2] && this.board[2][2] != null) {
-                    this.winner = this.symbol;
-                    this.finish = true;
-                }
-                else
-                    if (this.board[0][0] == this.board[0][1] && this.board[0][1] == this.board[0][2] && this.board[0][2] != null) {
-                        this.winner = this.symbol;
-                        this.finish = true;
-                    }
-                    else
-                        if (this.board[1][0] == this.board[1][1] && this.board[1][1] == this.board[1][2] && this.board[1][2] != null) {
-                            this.winner = this.symbol;
-                            this.finish = true;
-                        }
-                        else
-                            if (this.board[2][0] == this.board[2][1] && this.board[2][1] == this.board[2][2] && this.board[2][2] != null) {
-                                this.winner = this.symbol;
-                                this.finish = true;
-                            }
-                            else
-                                if (this.board[0][0] == this.board[1][1] && this.board[1][1] == this.board[2][2] && this.board[2][2] != null) {
-                                    this.winner = this.symbol;
-                                    this.finish = true;
-                                }   else
-                                    if (this.board[2][0] == this.board[1][1] && this.board[1][1] == this.board[0][2] && this.board[0][2] != null) {
-                                        this.winner = this.symbol;
-                                        this.finish = true;
-                                    }
-                                    else
-                                        if (this.count == 9) {
-                                            this.draw = true;
-                                            this.winner = null;
-                                            this.finish = true; 
-                                        }
+            if (this.board[i][0] == this.board[i][1] && this.board[i][1] == this.board[i][2] && this.board[i][2] != null) {
+                this.winner = this.symbol;
+                this.finish = true;
+            }
+        }
+        
+        if (this.board[0][0] == this.board[1][1] && this.board[1][1] == this.board[2][2] && this.board[2][2] != null) {
+            this.winner = this.symbol;
+            this.finish = true;
+        }   
+        
+        if (this.board[2][0] == this.board[1][1] && this.board[1][1] == this.board[0][2] && this.board[0][2] != null) {
+            this.winner = this.symbol;
+            this.finish = true;
+        }
+                                    
+        if (this.count == 9 && !this.finish) {
+            this.draw = true;
+            this.winner = null;
+            this.finish = true; 
+        }
 
         if (this.next) this.symbol = (this.symbol == 'x') ? 'o' : 'x';
 
